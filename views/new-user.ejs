@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/"><button type="button" name="button">Home</button></a> <br> <br>
+    <%if (!user) {%>
+      <form action="/add" method="post">
+        <label for="roll-no">Roll No:</label>
+        <input id="roll-no" type="text" name="roll">
+        <label for="user-name">Name:</label>
+        <input id="user-name" type="text" name="name">
+        <button type="submit" name="button">Save</button>
+      </form>
+    <%} else {%>
+      <form action="/add" method="post">
+        <label for="roll-no">Roll No:</label>
+        <input id="roll-no" type="text" name="roll" value=<%=user.roll%>>
+        <label for="user-name">Name:</label>
+        <input id="user-name" type="text" name="name" value=<%=user.name%>>
+        <button type="submit" name="button">Save</button>
+      </form>
+    <%}%>
+
+  </body>
+</html>

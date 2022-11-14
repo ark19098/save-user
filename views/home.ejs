@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>User List</h1>
+    <a href="/add"><button type="button" name="button">Add New User</button></a>
+    <% users.forEach(function(user){ %>
+      <h3><%= user.roll %></h3>
+      <h4><%= user.name %></h4>
+      <a href="/edit/<%=user.roll%>">Edit</a>
+      <a href="/delete/<%=user.roll%>">Delete</a>
+    <% }); %>
+  </body>
+</html>
