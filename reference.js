@@ -8,8 +8,32 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
+
+mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true});
+
+const usersSchema = {
+  roll: String,
+  name: String
+}
+
+const User = mongoose.model("User",usersSchema);
+
+const user = new User({
+    roll: 30,
+    name: "Ankur"
+  });
+  user.save(function(err){
+   if (!err){
+     res.redirect("/");
+   }
+  });
+
+// const Cat = mongoose.model('Cat', { name: String });
+//
+// const kitty = new Cat({ name: 'Zildjian' });
+// kitty.save().then(() => console.log('meow'));
 
 // mongoose.connect("mongodb://localhost:27017/usersDB");
 //
@@ -54,13 +78,3 @@ app.use(express.static('public'));
 //   });
 //   res.redirect('/');
 // });
-
-mongoose.connect('mongodb://localhost:27017/test');
-const Cat = mongoose.model('Cat', { name: String });
-
-const kitty = new Cat({ name: 'Zildjian' });
-kitty.save();
-
-app.listen(8080, function(){
-  console.log("Server stated at port no. 8080");
-});
